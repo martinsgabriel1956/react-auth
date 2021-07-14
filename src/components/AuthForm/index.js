@@ -7,6 +7,7 @@ export function AuthForm() {
   const passwordInputRef = useRef();
 
   const [isLogin, setIsLogin] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   function handleSwitchAuthMode() {
     setIsLogin((prevState) => !prevState);
@@ -18,8 +19,10 @@ export function AuthForm() {
     const email = emailInputRef.current.value;
     const password = passwordInputRef.current.value;
 
+    setIsLoading(true);
+    
     if (isLogin) {
-
+      
     } else {
       fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBIfWrde8TkiZmWittDscqthJfUMkVswIU`, {
         method: 'POST',
@@ -30,20 +33,24 @@ export function AuthForm() {
         }),
         headers: {
           'Content-Type': 'application/json',
-
+          
         }
       }).then(res => {
+        setIsLoading(false);
         if(res.ok) {
 
         } else {
           return res.json().then(data => {
-            console.log(data);
+            let errorMessage = "Authentication failed!";
+
+            // if(data && data.error && data.error.message) errorMessage = data.error.message;
+
+            alert(errorMessage);
           })
         }
       })
     };
   };
-
 
   return (
     <Container>
@@ -58,7 +65,8 @@ export function AuthForm() {
           <input ref={passwordInputRef} type='password' id='password' required />
         </Control>
         <Actions>
-          <button>{isLogin ? 'Login' : 'Create Account'}</button>
+          {!isLoading && <button>{isLogin ? 'Login' : 'Create Account'}</button>}
+          {isLoading && <p>Sending request...</p>}
           <ToggleButton
             type='button'
             onClick={handleSwitchAuthMode}

@@ -9,6 +9,7 @@ export const Container = styled.section`
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   padding: 1rem;
   text-align: center;
+  color: #FFF;
 
   h1 {
     text-align: center;
