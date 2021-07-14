@@ -43,7 +43,7 @@ export const Actions = styled.div`
   flex-direction: column;
   align-items: center;
 
-  button {
+  button:first-child {
     cursor: pointer;
     font: inherit;
     color: white;
