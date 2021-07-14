@@ -1,9 +1,9 @@
 import { Container } from './styles';
 
-export function MyComponent() {
+export function StartingPageContent() {
   return (
     <Container>
-      <h1>MyComponent</h1>
+      <h1>Welcome on Board!</h1>
     </Container>
   );
 };

@@ -1,14 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 import { App } from "./App";
-
-import { MyContextProvider } from './contexts/MyContext'
 
 ReactDOM.render(
   <React.StrictMode>
-    <MyContextProvider>
+    <BrowserRouter>
       <App />
-    </MyContextProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.querySelector("#root")
 );

@@ -1,5 +1,7 @@
+import { StartingPageContent } from '../../components/StartingPageContent'
+
 export function Home() {
   return (
-    <h1>Home</h1>
+    <StartingPageContent />
   );
 }
