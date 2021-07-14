@@ -1,10 +1,14 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 
 import { Container, Control, Actions, ToggleButton } from "./styles";
+
+import { AuthContext } from '../../context/AuthContext';
 
 export function AuthForm() {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
+
+  const { login } = useContext(AuthContext);
 
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -55,8 +59,8 @@ export function AuthForm() {
         });
       }
     })
-    .then((data) => {
-      console.log(data)
+    .then(data => {
+      login(data.idToken);
     })
     .catch((err) => {
       alert(err.message)
