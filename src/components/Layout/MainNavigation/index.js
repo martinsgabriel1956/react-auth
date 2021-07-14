@@ -8,6 +8,10 @@ export function MainNavigation() {
 
   const isLoggedIn = authCtx.isLoggedIn;
 
+  function handleLogout() {
+    authCtx.logout();
+  };
+
   return (
     <Container>
       <Link to="/">
@@ -27,7 +31,7 @@ export function MainNavigation() {
           )}
           {isLoggedIn && (
             <li>
-              <button>Logout</button>
+              <button onClick={handleLogout}>Logout</button>
             </li>
           )}
         </ul>
